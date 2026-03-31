@@ -48,14 +48,15 @@
         h2 { border-left: 6px solid var(--accent); padding-left: 20px; text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; color: var(--accent); margin-bottom: 2.5rem; }
         h3 { font-size: 1.6rem; margin-top: 0; color: #fff; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .stat-card { background: rgba(2, 6, 23, 0.6); padding: 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
         input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #020617; color: white; margin-top: 5px; }
         table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
         th, td { text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .tag { background: var(--accent); color: #020617; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
         .ocean { width: 100%; position: relative; bottom: 0; left: 0; height: 120px; }
         .wave { background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x; position: absolute; top: -198px; width: 6400px; height: 198px; animation: wave 10s infinite linear; opacity: 0.1; }
         @keyframes wave { 0% { margin-left: 0; } 100% { margin-left: -1600px; } }
+        @media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -72,7 +73,7 @@
 <div class="container">
     <section style="border: 2px solid var(--accent); background: rgba(14, 165, 233, 0.05);">
         <h2>Interactive Impact Calculator</h2>
-        <p>At <strong>State Street</strong>, my automations reclaimed 4 FTEs in capacity. Calculate the annual value I bring:</p>
+        <p>In my tenure at State Street, I automated workflows to reclaim 4 FTEs in capacity. Calculate the efficiency I can bring to your team:</p>
         <div class="grid-2" style="margin-bottom: 20px;">
             <div><label>Weekly Manual Hours:</label><input type="number" id="hours" value="40" oninput="calculate()"></div>
             <div><label>Team Size (FTEs):</label><input type="number" id="team" value="5" oninput="calculate()"></div>
@@ -85,18 +86,15 @@
 
     <section>
         <h2>🚀 Product Spotlight: Compliance Snapshot</h2>
-        <p>A specialized SaaS prototype for startups to navigate regulatory gap analysis for <strong>FR Y-9C, FFIEC 101, and SOC 2</strong>.</p>
+        <p>A SaaS-focused prototype designed to automate regulatory gap analysis for <strong>FR Y-9C, FFIEC 101, and SOC 2</strong>.</p>
         <table>
             <thead><tr><th>Phase</th><th>Status</th><th>Progress</th></tr></thead>
             <tbody>
-                <tr><td>Regulatory Discovery</td><td style="color: var(--accent);">Completed</td><td>100%</td></tr>
-                <tr><td>UX Wireframes & Logic</td><td style="color: #f59e0b;">Active</td><td>70%</td></tr>
-                <tr><td>MVP Build & PDF Export</td><td>Planned</td><td>Aug 2025 Start</td></tr>
+                <tr><td>Regulatory Logic Framework</td><td style="color: var(--accent);">Completed</td><td>100%</td></tr>
+                <tr><td>Wireframes & UI Logic</td><td style="color: #f59e0b;">Active</td><td>70%</td></tr>
+                <tr><td>Full Build & Data Integration</td><td>Upcoming</td><td>Q4 2026</td></tr>
             </tbody>
         </table>
-        <div style="margin-top: 20px; padding: 15px; background: rgba(2, 6, 23, 0.5); border-radius: 12px; font-size: 0.9rem; border-left: 4px solid var(--accent);">
-            <strong>Key Innovation:</strong> Designed a "Logic Engine" to translate thousands of pages of static regulations into a real-time readiness score.
-        </div>
     </section>
 
     <section>
@@ -106,73 +104,72 @@
 
     <section>
         <h2>Professional Chronology</h2>
-        
         <div style="margin-bottom: 40px;">
-            <div style="display: flex; justify-content: space-between;">
-                <h3>Technitto</h3>
-                <span style="color: var(--accent); font-weight: bold;">Current Focus</span>
-            </div>
+            <div style="display: flex; justify-content: space-between;"><h3>Technitto</h3><span style="color: var(--accent); font-weight: bold;">Present Focus</span></div>
             <ul>
-                <li>Implementing <strong>PyTorch</strong> for predictive analytics in financial reporting dashboards.</li>
-                <li>Orchestrating automation and server environments using <strong>Ansible</strong>.</li>
+                <li>Applying <strong>PyTorch</strong> for predictive components in financial dashboards.</li>
+                <li>Managing orchestration and server automation using <strong>Ansible</strong>.</li>
             </ul>
         </div>
-
         <div style="margin-bottom: 40px;">
-            <div style="display: flex; justify-content: space-between;">
-                <h3>State Street Corporation</h3>
-                <span style="color: var(--accent); font-weight: bold;">2018 — 2023</span>
-            </div>
+            <div style="display: flex; justify-content: space-between;"><h3>State Street Corporation</h3><span style="color: var(--accent); font-weight: bold;">2018 — 2023</span></div>
             <p><strong>Senior Associate / Assistant Manager</strong></p>
             <ul>
-                <li>Automated high-stakes reporting (SQL/Alteryx), reclaiming 4 FTEs in capacity while maintaining 100% SLA.</li>
-                <li>Managed global offshore transitions and migrated legacy systems to the <strong>Kingfield</strong> platform.</li>
+                <li>Architected <strong>SQL/Alteryx</strong> automation reclaiming 4 FTEs in capacity.</li>
+                <li>Managed global offshore transitions and migrated legacy systems to <strong>Kingfield</strong>.</li>
             </ul>
         </div>
-
         <div style="margin-bottom: 40px;">
-            <div style="display: flex; justify-content: space-between;">
-                <h3>JPMorgan Chase & Co.</h3>
-                <span style="color: var(--accent); font-weight: bold;">2014 — 2018</span>
-            </div>
+            <div style="display: flex; justify-content: space-between;"><h3>JPMorgan Chase & Co.</h3><span style="color: var(--accent); font-weight: bold;">2014 — 2018</span></div>
             <p><strong>Senior Research Specialist</strong></p>
             <ul>
-                <li>Spearheaded data forensics for <strong>DOJ and FBI inquiries</strong>, ensuring 100% audit-readiness.</li>
-                <li>Developed Power BI dashboards to track operational risk and backlog KPIs.</li>
+                <li>Spearheaded data forensics for <strong>DOJ/FBI inquiries</strong> with 100% audit accuracy.</li>
+                <li>Visualized risk KPIs and backlog metrics via <strong>Power BI</strong>.</li>
             </ul>
         </div>
-
         <div>
-            <div style="display: flex; justify-content: space-between;">
-                <h3>Infosys BPM</h3>
-                <span style="color: var(--accent); font-weight: bold;">2012 — 2014</span>
-            </div>
-            <p><strong>Process Executive, Mainframe Data</strong></p>
-            <ul>
-                <li>Automated mainframe data maintenance using <strong>JCL and UNIX</strong> for global workflows.</li>
-            </ul>
+            <div style="display: flex; justify-content: space-between;"><h3>Infosys BPM</h3><span style="color: var(--accent); font-weight: bold;">2012 — 2014</span></div>
+            <p><strong>Process Executive</strong></p>
+            <ul><li>Mainframe data automation using <strong>JCL and UNIX</strong>.</li></ul>
         </div>
     </section>
 
     <section>
-        <h2>Education & Credentials</h2>
-        <p><strong>BBM in Computer Applications</strong> | AJK Educational Institutions, India</p>
-        <div class="grid-2" style="margin-top: 25px;">
+        <h2>Education & Verifiable Credentials</h2>
+        <p style="margin-bottom: 30px;"><strong>BBM in Computer Applications</strong> | AJK Educational Institutions, India</p>
+        
+        <div class="grid-3">
             <div class="stat-card">
-                <strong>Google AI Analysis (2026)</strong><br>
-                <a href="https://www.coursera.org/verify/professional-cert/694DE0MNHEMH" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Certificate]</a>
+                <strong>AI for Data Analysis</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">Google (2026)</span>
+                <br><a href="https://www.coursera.org/verify/professional-cert/694DE0MNHEMH" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Certificate]</a>
             </div>
             <div class="stat-card">
-                <strong>IBM Big Data Foundations</strong><br>
-                <a href="https://www.credly.com/badges/d431d6ba-8200-41f5-9c82-adbaee03a4cc" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Badge]</a>
+                <strong>Advanced Data Analytics</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">Google</span>
+                <br><a href="https://www.coursera.org/verify/professional-cert/694DE0MNHEMH" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Certificate]</a>
+            </div>
+            <div class="stat-card">
+                <strong>Big Data Foundations</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">IBM</span>
+                <br><a href="https://www.credly.com/badges/d431d6ba-8200-41f5-9c82-adbaee03a4cc" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Badge]</a>
+            </div>
+            <div class="stat-card">
+                <strong>Data Science Tools</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">IBM</span>
+                <br><a href="https://www.credly.com/badges/0ced3f52-2d1f-4462-b46c-5f1dbfb7259d" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Badge]</a>
+            </div>
+            <div class="stat-card">
+                <strong>Big Data - Level 2</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">IBM</span>
+                <br><a href="https://www.credly.com/badges/d431d6ba-8200-41f5-9c82-adbaee03a4cc" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Badge]</a>
+            </div>
+            <div class="stat-card">
+                <strong>Data Analytics Capstone</strong><br><span style="font-size: 0.8rem; color: var(--text-dim);">Google</span>
+                <br><a href="https://www.coursera.org/verify/professional-cert/694DE0MNHEMH" target="_blank" style="font-size: 0.75rem; color: var(--accent);">[Verify Certificate]</a>
             </div>
         </div>
     </section>
 
     <section style="text-align: center;">
         <h2>Insights & Perspectives</h2>
-        <p>Reflections on data, leadership, and personal growth.</p>
-        <a href="https://www.blogger.com/u/1/blog/posts/7210775884684716217" target="_blank" style="display: inline-block; padding: 15px 30px; border: 1px solid var(--accent); border-radius: 30px; color: var(--accent); text-decoration: none; font-weight: 700;">Visit My Blog →</a>
+        <p>Sharing technical strategy and career reflections on Blogger.</p>
+        <a href="https://arajendranmaniyil.blogspot.com/" target="_blank" style="display: inline-block; padding: 15px 30px; border: 1px solid var(--accent); border-radius: 30px; color: var(--accent); text-decoration: none; font-weight: 700;">Read My Blog →</a>
     </section>
 </div>
 
