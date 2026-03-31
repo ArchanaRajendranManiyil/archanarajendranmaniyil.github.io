@@ -5,362 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archana Rajendran Maniyil | BI Developer & Operations Leader</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-        --bg: #0b0f1a;
-        --glass: rgba(30, 41, 59, 0.6);
-        --accent: #10b981; /* Emerald Green */
-        --accent-glow: rgba(16, 185, 129, 0.4);
-        --text: #f8fafc;
-        --text-dim: #94a3b8;
-    }
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <style>
+        :root {
+            --bg: #040914; /* Deep Trench Blue */
+            --glass: rgba(15, 23, 42, 0.7);
+            --accent: #06b6d4; /* Ocean Cyan */
+            --accent-glow: rgba(6, 182, 212, 0.4);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
 
-    body {
-        font-family: 'Inter', sans-serif;
-        background: radial-gradient(circle at top right, #1e293b, #0b0f1a); /* Modern Gradient */
-        background-attachment: fixed;
-        color: var(--text);
-        margin: 0;
-        line-height: 1.6;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top right, #0c4a6e, #040914);
+            background-attachment: fixed;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
 
-    header {
-        background: rgba(15, 23, 42, 0.8);
-        backdrop-filter: blur(12px);
-        padding: 5rem 2rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        header {
+            background: rgba(4, 9, 20, 0.8);
+            backdrop-filter: blur(15px);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+        }
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
-    section {
-        margin-bottom: 3rem;
-        background: var(--glass);
-        backdrop-filter: blur(10px); /* Glassmorphism Blur */
-        padding: 2.5rem;
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
+        section {
+            margin-bottom: 3rem;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
 
-    section:hover {
-        transform: translateY(-5px); /* Interactive lift */
-        border-color: var(--accent);
-        box-shadow: 0 12px 40px 0 var(--accent-glow);
-    }
+        section:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px 0 var(--accent-glow);
+        }
 
-    h1 { 
-        font-size: 3rem; 
-        margin: 0; 
-        background: linear-gradient(90deg, #10b981, #34d399);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; /* Metallic/Glow Title */
-        letter-spacing: -1px;
-    }
+        h1 { 
+            font-size: 3rem; margin: 0; 
+            background: linear-gradient(90deg, #06b6d4, #22d3ee);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-    h2 { 
-        font-size: 1.8rem;
-        border-left: 5px solid var(--accent); 
-        padding-left: 20px; 
-        margin-bottom: 1.5rem; 
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+        h2 { border-left: 5px solid var(--accent); padding-left: 20px; text-transform: uppercase; letter-spacing: 1px; }
 
-    h3 { color: var(--accent); margin-top: 0; font-weight: 700; }
+        /* ROI Calculator Ocean Glow */
+        #roi-card { border: 2px solid var(--accent); background: rgba(6, 182, 212, 0.05); }
+        input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background: #040914; color: white; outline: none; }
+        input:focus { border-color: var(--accent); }
+        .result-box { background: rgba(4, 9, 20, 0.9); padding: 25px; border-radius: 15px; border: 1px solid var(--accent-glow); text-align: center; }
 
-    /* Impact Calculator Glow */
-    #roi-card { 
-        border: 2px solid var(--accent);
-        background: rgba(16, 185, 129, 0.05);
-    }
+        /* Skill Pills */
+        .skill-tag { background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent); padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; display: inline-block; margin: 5px; }
 
-    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
-
-    input { 
-        width: 100%; 
-        padding: 12px; 
-        border-radius: 10px; 
-        border: 1px solid rgba(255,255,255,0.2); 
-        background: rgba(15, 23, 42, 0.9); 
-        color: white; 
-        font-size: 1rem;
-        outline: none;
-    }
-
-    input:focus { border-color: var(--accent); }
-
-    .result-box { 
-        background: rgba(15, 23, 42, 0.8); 
-        padding: 25px; 
-        border-radius: 15px; 
-        text-align: center;
-        border: 1px solid var(--accent-glow);
-    }
-
-    /* Skills Progress Glow */
-    .skill-item { margin-bottom: 20px; }
-    .bar-bg { background: rgba(51, 65, 85, 0.5); height: 10px; border-radius: 10px; margin-top: 8px; }
-    .bar-fill { 
-        height: 10px; 
-        border-radius: 10px; 
-        background: linear-gradient(90deg, var(--accent), #34d399); 
-        box-shadow: 0 0 15px var(--accent-glow);
-    }
-
-    /* Professional Grid Cards */
-    .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .cert-item { 
-        background: rgba(15, 23, 42, 0.6); 
-        padding: 15px; 
-        border-radius: 12px; 
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: background 0.3s;
-    }
-    .cert-item:hover { background: rgba(16, 185, 129, 0.1); }
-
-    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-    th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    
-    footer { padding: 4rem; text-align: center; color: var(--text-dim); }
-    a { color: var(--accent); text-decoration: none; font-weight: 600; transition: color 0.3s; }
-    a:hover { color: #34d399; }
-</style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        
+        footer { padding: 4rem; text-align: center; color: var(--text-dim); }
+        a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    </style>
 </head>
 <body>
 
 <header>
     <h1>Archana Rajendran Maniyil</h1>
-    <p style="font-size: 1.2rem; color: var(--text-dim);">Strategic Operations Leader | BI Developer | Risk & Compliance Expert</p>
-    <div style="margin-top: 15px;">
-        <a href="mailto:archanarajendranmaniyil@hotmail.com">Email</a> • 
-        <a href="https://www.linkedin.com/in/archana-rajendran-m/" target="_blank">LinkedIn</a> • 
-        <span>Alexandria, VA</span>
-    </div>
+    <p style="font-size: 1.2rem; color: var(--text-dim);">BI Developer & Operations Leader | 12+ Years Financial Expertise</p>
 </header>
 
 <div class="container">
     <section>
         <h2>Executive Summary</h2>
-        <p>Strategic leader with over 12 years of experience at <strong>State Street</strong> and <strong>JPMorgan Chase</strong>. I specialize in bridging the gap between Trading Desks and Technology by automating complex workflows and ensuring regulatory stability for frameworks like Basel III and FR Y-15.</p>
+        <p>Operations and Risk Leader with over 12 years of experience at <strong>State Street</strong> and <strong>JPMorgan Chase</strong>. Specialized in bridging the gap between Trading Desks and Technology through high-impact automation (Alteryx/SQL) and regulatory reporting (Basel III/FR Y-15).</p>
     </section>
 
     <section id="roi-card">
-        <h2 style="border-color: var(--accent);">Interactive Impact Calculator</h2>
-        <p>At State Street, I engineered automations that reduced manual work by <strong>40%</strong> and saved <strong>4 FTEs</strong>. Calculate the potential impact for your team:</p>
-        
-        <div class="calc-grid">
-            <div>
-                <label>Weekly Manual Hours:</label>
-                <input type="number" id="hours" value="40" oninput="calculate()">
-            </div>
-            <div>
-                <label>Team Size (FTEs):</label>
-                <input type="number" id="team" value="5" oninput="calculate()">
-            </div>
+        <h2>Interactive Impact Calculator</h2>
+        <p>Based on my proven 40% automation success at State Street:</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+            <div><label>Weekly Manual Hours:</label><input type="number" id="hours" value="40" oninput="calculate()"></div>
+            <div><label>Team Size (FTEs):</label><input type="number" id="team" value="5" oninput="calculate()"></div>
         </div>
-
         <div class="result-box">
-            <span style="color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem;">Estimated Annual Savings</span>
-            <h1 id="savingsResult" style="margin: 10px 0;">$0</h1>
-            <p id="hoursResult" style="color: var(--accent);">0 hours reclaimed per year.</p>
+            <h1 id="savingsResult" style="color: var(--accent); margin: 0;">$0</h1>
+            <p id="hoursResult" style="margin: 0;">0 hours reclaimed annually.</p>
         </div>
     </section>
 
     <section>
-        <h3>🚀 Product Case Study: Compliance Snapshot</h3>
-        <p>A lightweight SaaS solution designed to help startups assess readiness for regulatory filings like <strong>FR Y-9C, FFIEC 101, and SOC 2</strong>.</p>
-        
+        <h2>Technical Capabilities Matrix</h2>
+        <div id="skillsRadar" style="height: 450px;"></div>
+        <div style="text-align: center; margin-top: 10px;">
+            <div class="skill-tag">SQL</div><div class="skill-tag">Alteryx</div>
+            <div class="skill-tag">Power BI</div><div class="skill-tag">Python</div>
+            <div class="skill-tag">Basel III</div><div class="skill-tag">Ansible</div>
+        </div>
+    </section>
+
+    <section>
+        <h3>🚀 Product Prototype: Compliance Snapshot</h3>
+        <p>A lightweight SaaS tool for regulatory gap analysis (FR Y-9C, FFIEC 101).</p>
         <table>
-            <thead>
-                <tr>
-                    <th>Phase</th>
-                    <th>Status</th>
-                    <th>Completion</th>
-                </tr>
-            </thead>
+            <thead><tr><th>Phase</th><th>Status</th><th>Completion</th></tr></thead>
             <tbody>
-                <tr>
-                    <td>Discovery & Research</td>
-                    <td style="color: var(--accent);">Completed</td>
-                    <td>100%</td>
-                </tr>
-                <tr>
-                    <td>UX Wireframes & Logic</td>
-                    <td style="color: #f59e0b;">In Progress</td>
-                    <td>70%</td>
-                </tr>
-                <tr>
-                    <td>Waitlist Page</td>
-                    <td style="color: var(--accent);">Completed</td>
-                    <td>100%</td>
-                </tr>
+                <tr><td>Discovery</td><td style="color: var(--accent);">Completed</td><td>100% [cite: 44]</td></tr>
+                <tr><td>UX Wireframes</td><td style="color: #f59e0b;">In Progress</td><td>70% [cite: 44]</td></tr>
+                <tr><td>Waitlist</td><td style="color: var(--accent);">Completed</td><td>100% [cite: 44]</td></tr>
             </tbody>
         </table>
-
-        <div style="background: #0f172a; padding: 15px; border-radius: 8px; margin-top: 15px;">
-            <h4 style="margin-top: 0; color: var(--accent);">Technical Insight: The Logic Engine</h4>
-            <p style="font-size: 0.9rem;">I designed the logic core to weigh user inputs against regulatory checkpoints to calculate "Gap Density," translating thousands of pages of requirements into a real-time readiness score.</p>
-        </div>
-    </section>
-    <section>
-        <h2>📊 Technical Portfolio Gallery</h2>
-        <p style="font-size: 0.9rem; color: var(--text-dim);">Demonstrating proficiency in Power BI, Tableau, and SQL for Global Technology Services.</p>
-        
-       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-    
-    <div style="background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155;">
-        <h3 style="color: #10b981; margin-top: 0; font-size: 1.2rem;">GTS Operations Hub</h3>
-        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;">
-            Interactive tracking of SLA performance and SWIFT transaction exceptions. Designed to provide real-time visibility into high-stakes operational reporting.
-        </p>
-        <div style="color: #10b981; font-size: 0.8rem; font-weight: bold; margin-top: 10px;">
-            Power BI | SQL | Alteryx
-        </div>
-    </div>
-
-    <div style="background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155;">
-        <h3 style="color: #10b981; margin-top: 0; font-size: 1.2rem;">Regulatory Risk Heatmap</h3>
-        <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5;">
-            Visualizing compliance gaps for Basel III and FR Y-15 frameworks. Translates complex regulatory data into actionable executive-level heatmaps.
-        </p>
-        <div style="color: #10b981; font-size: 0.8rem; font-weight: bold; margin-top: 10px;">
-            Tableau | Python | Excel
-        </div>
-    </div>
-
-</div>
-        <p style="font-size: 0.85rem; margin-top: 15px; color: var(--text-dim);">*Note: All dashboards utilize sanitized, non-confidential data mock-ups.</p>
     </section>
 
     <section>
-        <h2>Experience Highlights</h2>
-        <div style="margin-bottom: 20px;">
+        <h2>Core Experience</h2>
+        <div style="margin-bottom: 25px;">
             <h3>State Street Corporation</h3>
-            <p><strong>Operations Leadership & Data Analyst</strong></p>
-            <ul>
-                <li>Automated reporting using <strong>SQL and Alteryx</strong>, eliminating manual touchpoints by 40%.</li>
-                <li>Led migration from legacy Crystal Reports to the Kingfield platform.</li>
-                <li>Managed offshore transition of critical reporting functions with 100% SLA performance.</li>
-            </ul>
+            <p>Engineered automation reducing manual touchpoints by 40% (saved 4 FTEs). Managed offshore transitions and SWIFT monitoring.</p>
         </div>
         <div>
             <h3>JPMorgan Chase & Co.</h3>
-            <p><strong>Senior Research Specialist</strong></p>
-            <ul>
-                <li>Led data forensics for high-stakes DOJ and FBI inquiries, ensuring 100% audit-readiness.</li>
-                <li>Synthesized audit findings into executive KPIs using Power BI and PowerPoint.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section>
-    <h2>🛠️ Technical Arsenal & Domain Expertise</h2>
-    <p style="color: var(--text-dim); margin-bottom: 2rem;">A specialized toolkit focused on trade support automation, regulatory forensics, and BI architecture.</p>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-        <div>
-            <h4 style="color: var(--accent); margin-bottom: 10px;">Analytics & Automation</h4>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">SQL (Complex Joins & Stored Procs)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 98%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Alteryx (ETL & Workflow Design)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Python (Pandas, NumPy, PyTorch)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 88%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Advanced Excel (VBA/Power Query)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
-            </div>
-        </div>
-
-        <div>
-            <h4 style="color: var(--accent); margin-bottom: 10px;">BI & Risk Domain</h4>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Power BI (DAX & Data Modeling)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 92%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Tableau (Interactive Visualization)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 90%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Regulatory (Basel III, FR Y-15)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 95%;"></div></div>
-            </div>
-            <div class="skill-item">
-                <span style="font-size: 0.9rem;">Infrastructure (Ansible/UNIX)</span>
-                <div class="bar-bg"><div class="bar-fill" style="width: 80%;"></div></div>
-            </div>
-        </div>
-    </div>
-
-    <div style="margin-top: 30px; padding: 15px; background: #0f172a; border-radius: 8px; border: 1px solid #334155;">
-        <h4 style="margin: 0 0 10px 0; font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim);">Additional Stack Components</h4>
-        <div style="display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.8rem;">
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">SWIFT Monitoring</span>
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">Kingfield Platform</span>
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">Mainframe (JCL)</span>
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">Google Cloud AI</span>
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">IBM Big Data</span>
-            <span style="background: #1e293b; padding: 5px 12px; border-radius: 20px;">Access Database</span>
-        </div>
-    </div>
-</section>
-
-   <section>
-        <h2>📜 Professional Certifications</h2>
-        <div class="cert-grid">
-            <div class="cert-item">
-                <strong>AI for Data Analysis</strong> (Google, 2026)
-                <br><a href="https://www.coursera.org/verify/694DE0MNHEMH" target="_blank" style="font-size: 0.8rem; color: var(--accent);">[Verify Credential]</a>
-            </div>
-            <div class="cert-item">
-                <strong>Advanced Data Analytics Capstone</strong> (Google, 2025)
-                <br><a href="https://www.coursera.org/verify/1ADCWVUV66EQ" target="_blank" style="font-size: 0.8rem; color: var(--accent);">[Verify Credential]</a>
-            </div>
-            <div class="cert-item">
-                <strong>Data Science Tools & Methodologies</strong> (IBM)
-                <br><a href="https://www.credly.com/badges/0ced3f52-2d1f-4462-b46c-5f1dbfb7259d" target="_blank" style="font-size: 0.8rem; color: var(--accent);">[Verify Credential]</a>
-            </div>
-            <div class="cert-item">
-                <strong>Big Data Foundations – Level 2</strong> (IBM)
-                <br><a href="https://www.credly.com/badges/d431d6ba-8200-41f5-9c82-adbaee03a4cc" target="_blank" style="font-size: 0.8rem; color: var(--accent);">[Verify Credential]</a>
-            </div>
+            <p>Spearheaded data forensics for DOJ/FBI inquiries, ensuring 100% audit-readiness. Synthesized risk KPIs for executive leadership.</p>
         </div>
     </section>
 </div>
 
 <footer>
-    <p>© 2026 Archana Rajendran Maniyil | Built for Excellence</p>
+    <p>© 2026 Archana Rajendran Maniyil | archanarajendranmaniyil@hotmail.com</p>
 </footer>
 
 <script>
+    // ROI Calculator Logic
     function calculate() {
         const h = document.getElementById('hours').value;
         const t = document.getElementById('team').value;
-        const rate = 65; 
-        const reduction = 0.40; 
-
-        const savedHours = (h * t) * reduction * 52;
-        const savedMoney = savedHours * rate;
-
+        const savedHours = (h * t) * 0.40 * 52;
+        const savedMoney = savedHours * 65;
         document.getElementById('savingsResult').innerText = "$" + Math.round(savedMoney).toLocaleString();
-        document.getElementById('hoursResult').innerText = Math.round(savedHours).toLocaleString() + " hours reclaimed per year.";
+        document.getElementById('hoursResult').innerText = Math.round(savedHours).toLocaleString() + " hours reclaimed annually.";
     }
-    calculate(); 
-</script>
+    calculate();
 
+    // Radar Chart Logic
+    var data = [{
+        type: 'scatterpolar',
+        r: [98, 92, 95, 88, 95], 
+        theta: ['SQL/Alteryx','Power BI','Risk/Compliance','Python','Stakeholders'],
+        fill: 'toself',
+        marker: { color: '#06b6d4' },
+        fillcolor: 'rgba(6, 182, 212, 0.3)'
+    }];
+    var layout = {
+        polar: { 
+            bgcolor: 'rgba(0,0,0,0)', 
+            radialaxis: { visible: true, range: [0, 100], color: '#94a3b8' },
+            angularaxis: { color: '#f8fafc' }
+        },
+        showlegend: false,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        font: { color: '#f8fafc', family: 'Inter' },
+        margin: { t: 40, b: 40, l: 40, r: 40 }
+    };
+    Plotly.newPlot('skillsRadar', data, layout);
+</script>
 </body>
 </html>
