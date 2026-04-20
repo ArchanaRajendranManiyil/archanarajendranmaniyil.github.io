@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple as an Operating System</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background: linear-gradient(180deg, #020617, #0b1220);
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+/* Back button */
+.back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #0ea5e9;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1000;
+}
+
+/* Story sections */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    opacity: 0.2;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+/* Active section when visible */
+section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typography */
+h1 {
+    font-size: 3rem;
+    margin: 10px 0;
+    color: #0ea5e9;
+}
+
+h2 {
+    color: #2dd4bf;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 700px;
+}
+
+/* Highlight box */
+.highlight {
+    margin-top: 20px;
+    padding: 20px;
+    border-left: 3px solid #0ea5e9;
+    background: rgba(15, 23, 42, 0.6);
+    max-width: 700px;
+}
+</style>
+</head>
+
+<body>
+
+<a class="back" href="index.html">← Back to Portfolio</a>
+
+<!-- SECTION 1 -->
+<section class="story">
+    <h2>CONCEPT</h2>
+    <h1>Temple as an Operating System</h1>
+    <p>
+        What if ancient temples were not just places of worship, but structured systems designed for coordination,
+        behavior, and long-term stability?
+    </p>
+</section>
+
+<!-- SECTION 2 -->
+<section class="story">
+    <h2>SYSTEM VIEW</h2>
+    <h1>Architecture of Behavior</h1>
+    <p>
+        Systems shape behavior. Architecture shapes movement. Rituals shape repetition.
+        Together they form a structured operating model for society.
+    </p>
+</section>
+
+<!-- SECTION 3 -->
+<section class="story">
+    <h2>PROCESSES</h2>
+    <h1>Ritual as Computation</h1>
+    <p>
+        Repeated rituals behave like scheduled processes.
+        They maintain order, predictability, and continuity over time.
+    </p>
+
+    <div class="highlight">
+        Key Idea: Repetition is not symbolic — it is structural.
+    </div>
+</section>
+
+<!-- SECTION 4 -->
+<section class="story">
+    <h2>NETWORK</h2>
+    <h1>Distributed System</h1>
+    <p>
+        Temples function like distributed networks — no single control point,
+        but interconnected nodes of activity, meaning, and participation.
+    </p>
+</section>
+
+<!-- SECTION 5 -->
+<section class="story">
+    <h2>INSIGHT</h2>
+    <h1>Everything is a System</h1>
+    <p>
+        Once you start seeing systems, you stop seeing isolated events.
+        You start seeing structure, flow, and dependency.
+    </p>
+</section>
+
+<script>
+// Scroll reveal logic
+const sections = document.querySelectorAll(".story");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
+    });
+}, {
+    threshold: 0.4
+});
+
+sections.forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
