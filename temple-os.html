@@ -9,41 +9,95 @@
 body {
     margin: 0;
     font-family: Inter, Arial, sans-serif;
-    background: linear-gradient(180deg, #020617, #0b1220);
+    background: #020617;
     color: #f8fafc;
     overflow-x: hidden;
+    cursor: none;
 }
 
-/* Back button */
+/* BACK BUTTON */
 .back {
     position: fixed;
     top: 20px;
     left: 20px;
+    z-index: 1000;
     color: #0ea5e9;
     text-decoration: none;
     font-weight: 600;
-    z-index: 1000;
 }
 
-/* Story sections */
-section {
+/* CURSOR */
+.cursor {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #0ea5e9;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.cursor-glow {
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(14,165,233,0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+}
+
+/* CLICK RIPPLE */
+.ripple {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(14,165,233,0.35);
+    transform: translate(-50%, -50%);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+@keyframes rippleEffect {
+    from {
+        width: 0px;
+        height: 0px;
+        opacity: 0.6;
+    }
+    to {
+        width: 120px;
+        height: 120px;
+        opacity: 0;
+    }
+}
+
+/* SCENES */
+.scene {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 80px;
-    opacity: 0.2;
+    align-items: center;
+    padding: 100px;
+    opacity: 0;
     transform: translateY(60px);
-    transition: all 0.8s ease;
+    transition: all 1.2s ease;
 }
 
-/* Active section when visible */
-section.active {
+.scene.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Typography */
+/* CONTENT */
+.content {
+    max-width: 750px;
+}
+
 h1 {
     font-size: 3rem;
     margin: 10px 0;
@@ -52,90 +106,79 @@ h1 {
 
 h2 {
     color: #2dd4bf;
+    font-size: 0.85rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
 p {
     color: #94a3b8;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    max-width: 700px;
+    font-size: 1.2rem;
+    line-height: 1.8;
 }
 
-/* Highlight box */
-.highlight {
-    margin-top: 20px;
-    padding: 20px;
-    border-left: 3px solid #0ea5e9;
-    background: rgba(15, 23, 42, 0.6);
-    max-width: 700px;
-}
+/* BACKGROUNDS */
+.scene:nth-child(1) { background: radial-gradient(circle at left, #0b1220, #020617); }
+.scene:nth-child(2) { background: radial-gradient(circle at right, #0a1a2f, #020617); }
+.scene:nth-child(3) { background: radial-gradient(circle at left, #0d1b2a, #020617); }
+.scene:nth-child(4) { background: radial-gradient(circle at right, #0b1320, #020617); }
+.scene:nth-child(5) { background: radial-gradient(circle at center, #081018, #020617); }
+
 </style>
 </head>
 
 <body>
 
-<a class="back" href="index.html">← Back to Portfolio</a>
+<a class="back" href="index.html">← Exit Experience</a>
 
-<!-- SECTION 1 -->
-<section class="story">
+<!-- CURSOR ELEMENTS -->
+<div class="cursor"></div>
+<div class="cursor-glow"></div>
+
+<!-- SCENES -->
+<section class="scene">
+  <div class="content">
     <h2>CONCEPT</h2>
     <h1>Temple as an Operating System</h1>
-    <p>
-        What if ancient temples were not just places of worship, but structured systems designed for coordination,
-        behavior, and long-term stability?
-    </p>
+    <p>What if ancient spaces were structured systems for coordination, behavior, and continuity?</p>
+  </div>
 </section>
 
-<!-- SECTION 2 -->
-<section class="story">
+<section class="scene">
+  <div class="content">
     <h2>SYSTEM VIEW</h2>
     <h1>Architecture of Behavior</h1>
-    <p>
-        Systems shape behavior. Architecture shapes movement. Rituals shape repetition.
-        Together they form a structured operating model for society.
-    </p>
+    <p>Systems shape movement. Architecture defines flow. Rituals define repetition.</p>
+  </div>
 </section>
 
-<!-- SECTION 3 -->
-<section class="story">
-    <h2>PROCESSES</h2>
+<section class="scene">
+  <div class="content">
+    <h2>PROCESS</h2>
     <h1>Ritual as Computation</h1>
-    <p>
-        Repeated rituals behave like scheduled processes.
-        They maintain order, predictability, and continuity over time.
-    </p>
-
-    <div class="highlight">
-        Key Idea: Repetition is not symbolic — it is structural.
-    </div>
+    <p>Repetition is not symbolic — it is structural and stabilizing.</p>
+  </div>
 </section>
 
-<!-- SECTION 4 -->
-<section class="story">
+<section class="scene">
+  <div class="content">
     <h2>NETWORK</h2>
-    <h1>Distributed System</h1>
-    <p>
-        Temples function like distributed networks — no single control point,
-        but interconnected nodes of activity, meaning, and participation.
-    </p>
+    <h1>Distributed Meaning</h1>
+    <p>Meaning emerges from interaction, not central control.</p>
+  </div>
 </section>
 
-<!-- SECTION 5 -->
-<section class="story">
+<section class="scene">
+  <div class="content">
     <h2>INSIGHT</h2>
     <h1>Everything is a System</h1>
-    <p>
-        Once you start seeing systems, you stop seeing isolated events.
-        You start seeing structure, flow, and dependency.
-    </p>
+    <p>Once you see systems, you stop seeing events — you see structure.</p>
+  </div>
 </section>
 
 <script>
-// Scroll reveal logic
-const sections = document.querySelectorAll(".story");
+/* SCROLL REVEAL */
+const scenes = document.querySelectorAll(".scene");
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -143,11 +186,35 @@ const observer = new IntersectionObserver(entries => {
             entry.target.classList.add("active");
         }
     });
-}, {
-    threshold: 0.4
+}, { threshold: 0.4 });
+
+scenes.forEach(scene => observer.observe(scene));
+
+/* CURSOR MOVEMENT */
+const cursor = document.querySelector(".cursor");
+const glow = document.querySelector(".cursor-glow");
+
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
 });
 
-sections.forEach(sec => observer.observe(sec));
+/* CLICK RIPPLE EFFECT */
+document.addEventListener("click", (e) => {
+    const ripple = document.createElement("div");
+    ripple.className = "ripple";
+    ripple.style.left = e.clientX + "px";
+    ripple.style.top = e.clientY + "px";
+
+    document.body.appendChild(ripple);
+
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+});
 </script>
 
 </body>
